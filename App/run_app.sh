@@ -1,6 +1,8 @@
 EXTRACT="$1"
 INFERENCE="$2"
 
+# pip install --no-cache-dir -r requirements.txt
+
 # Extraction step
 if [ "${EXTRACT}" = "TRUE" ]; then
     python /App/XML_Extraction/Extraction.py
