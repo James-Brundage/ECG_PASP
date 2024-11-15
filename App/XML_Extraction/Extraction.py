@@ -12,9 +12,9 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-# Ensure linux file can be run
-st = os.stat('xml2ecg_updatedleads.linux')
-os.chmod('xml2ecg_updatedleads.linux', st.st_mode | stat.S_IEXEC)
+# # Ensure linux file can be run
+# st = os.stat('xml2ecg_updatedleads.linux')
+# os.chmod('xml2ecg_updatedleads.linux', st.st_mode | stat.S_IEXEC)
 
 # Directory with xml files
 xml_file_dir = '/Data_Source'

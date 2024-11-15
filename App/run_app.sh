@@ -8,5 +8,6 @@ fi
 
 # Inference
 if [ "${INFERENCE}" = "TRUE" ]; then
+    chmod +x /App/XML_Extraction/xml2ecg_updatedleads.linux
     python /App/Model_Inference/apply.py
 fi
