@@ -29,10 +29,6 @@ else
     exit 1
 fi
 
-# # Ensure GIT LFS up to date
-# sudo apt install git-lfs
-# git lfs fetch
-# git lfs checkout
 
 # Check if docker image exists, build if it doesn't
 if docker image inspect "${IMAGE_NAME}:${IMAGE_TAG}" > /dev/null 2>&1; then

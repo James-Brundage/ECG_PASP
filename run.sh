@@ -25,10 +25,6 @@ else
     exit 1
 fi
 
-# Ensure GIT LFS up to date
-sudo apt install git-lfs
-git lfs fetch
-git lfs checkout
 
 # Check if docker image exists, build if it doesn't
 if docker image inspect "${IMAGE_NAME}:${IMAGE_TAG}" > /dev/null 2>&1; then
@@ -45,6 +41,6 @@ docker run -it --rm \
 --mount type=bind,source=$XML_DIR,target=/Data_Source \
 --mount type=bind,source=$EXTRACTION_OUTPUT_DIR,target=/extraction_output \
 --mount type=bind,source=$PREDS_OUTPUT_DIR,target=/Preds_output \
---mount type=bind,source="$(pwd)"/App,target=/App \
+--mount type=bind,source="$(pwd)"/App,target=/AppStarter \
 --name pasp_container \
-"${IMAGE_NAME}:${IMAGE_TAG}" bash /App/run_app.sh $EXTRACT $INFERENCE
+"${IMAGE_NAME}:${IMAGE_TAG}" bash /AppStarter/run_app.sh $EXTRACT $INFERENCE
