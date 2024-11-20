@@ -47,6 +47,7 @@ else
 fi
 
 # Ensure GIT LFS up to date
+sudo apt install git-lfs
 git lfs fetch
 git lfs checkout
 
