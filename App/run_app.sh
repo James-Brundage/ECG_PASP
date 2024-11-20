@@ -10,6 +10,7 @@ git lfs checkout
 
 # Extraction step
 if [ "${EXTRACT}" = "TRUE" ]; then
+    ls
     python App/XML_Extraction/Extraction.py
 fi
 
