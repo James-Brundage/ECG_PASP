@@ -7,6 +7,29 @@ IMAGE_TAG=latest
 EXTRACT="TRUE"
 INFERENCE="TRUE"
 
+# Check requirements
+check_docker_installed() {
+    if command -v docker &> /dev/null; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+check_docker_installed
+status=$?  # Store the exit status
+if [[ $status -eq 0 ]]; then
+    echo "Docker confirmed."
+else
+    echo "Docker not isntalled, please install and try again."
+    exit 1
+fi
+
+# Ensure GIT LFS up to date
+sudo apt install git-lfs
+git lfs fetch
+git lfs checkout
+
 # Check if docker image exists, build if it doesn't
 if docker image inspect "${IMAGE_NAME}:${IMAGE_TAG}" > /dev/null 2>&1; then
     echo "Docker image ${IMAGE_NAME}:${IMAGE_TAG} exists."

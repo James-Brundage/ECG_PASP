@@ -29,23 +29,6 @@ else
     exit 1
 fi
 
-check_gitlfs_installed() {
-    if command -v git lfs &> /dev/null; then
-        return 0
-    else
-        return 1
-    fi
-}
-
-check_gitlfs_installed
-status=$?  # Store the exit status
-if [[ $status -eq 0 ]]; then
-    echo "Git LFS confirmed."
-else
-    echo "GIT LFS not isntalled, please install and try again."
-    exit 1
-fi
-
 # Ensure GIT LFS up to date
 sudo apt install git-lfs
 git lfs fetch
