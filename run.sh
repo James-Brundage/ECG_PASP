@@ -2,6 +2,8 @@
 XML_DIR="$(pwd)"/Sample_Data_Source
 EXTRACTION_OUTPUT_DIR="$(pwd)"/Extraction_out
 PREDS_OUTPUT_DIR="$(pwd)"/Preds_Out
+WEIGHTS_DIR="$(pwd)"
+WEIGHTS_NAME=1xy5agl8_Jit_PASP_TRVmax_JPE_705386.pth
 IMAGE_NAME=ecg_pasp_v2
 IMAGE_TAG=latest
 EXTRACT="TRUE"
@@ -16,6 +18,7 @@ check_docker_installed() {
     fi
 }
 
+# Function to check if docker is installed
 check_docker_installed
 status=$?  # Store the exit status
 if [[ $status -eq 0 ]]; then
@@ -42,5 +45,6 @@ docker run -it --rm \
 --mount type=bind,source=$EXTRACTION_OUTPUT_DIR,target=/extraction_output \
 --mount type=bind,source=$PREDS_OUTPUT_DIR,target=/Preds_output \
 --mount type=bind,source="$(pwd)"/App,target=/AppStarter \
+--mount type=bind,source=$WEIGHTS_DIR,target=/Weights \
 --name pasp_container \
-"${IMAGE_NAME}:${IMAGE_TAG}" bash /AppStarter/run_app.sh $EXTRACT $INFERENCE
+"${IMAGE_NAME}:${IMAGE_TAG}" bash /AppStarter/run_app.sh $EXTRACT $INFERENCE $WEIGHTS_NAME

@@ -4,6 +4,11 @@ import os
 from Dataloading import InfDataset
 import tqdm
 import pandas as pd
+import sys
+
+# Deal with command line args
+args = sys.argv
+weights_name = args[1]
 
 # Reset working dir to where this file is located
 abspath = os.path.abspath(__file__)
@@ -16,7 +21,7 @@ if torch.cuda.is_available():
     device = torch.device("cuda")
 
 # JIT Model
-model_path = '1xy5agl8_Jit_PASP_TRVmax_JPE_705386.pth'
+model_path = os.path.join('/Weights', weights_name)
 net = torch.jit.load(f'{model_path}', map_location=device)
 net.to(device)
 _ = net.eval()

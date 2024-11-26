@@ -1,21 +1,14 @@
 EXTRACT="$1"
 INFERENCE="$2"
-
-git clone https://github.com/James-Brundage/ECG_PASP.git
-cd ECG_PASP/
-
-git-lfs install
-git lfs fetch
-git lfs checkout
+WEIGHTS_NAME="$3"
 
 # Extraction step
 if [ "${EXTRACT}" = "TRUE" ]; then
-    ls
-    python App/XML_Extraction/Extraction.py
+    chmod +x /AppStarter/XML_Extraction/xml2ecg_updatedleads.linux
+    python /AppStarter/XML_Extraction/Extraction.py
 fi
 
 # Inference
 if [ "${INFERENCE}" = "TRUE" ]; then
-    chmod +x App/XML_Extraction/xml2ecg_updatedleads.linux
-    python App/Model_Inference/apply.py
+    python /AppStarter/Model_Inference/apply.py $3
 fi
