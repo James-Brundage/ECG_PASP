@@ -7,7 +7,7 @@ XML_DIR="$(pwd)"/Sample_Data_Source
 EXTRACTION_OUTPUT_DIR="$(pwd)"/Extraction_out
 PREDS_OUTPUT_DIR="$(pwd)"/Preds_Out
 WEIGHTS_DIR="$(pwd)"
-WEIGHTS_NAME=1xy5agl8_Jit_PASP_TRVmax_JPE_705386.pth
+WEIGHTS_NAME="1xy5agl8_Jit_PASP_TRVmax_JPE_705386.pth"
 IMAGE_NAME=ecg_pasp_v2
 IMAGE_TAG=latest
 EXTRACT="TRUE"
@@ -51,4 +51,4 @@ docker run -it --rm \
 --mount type=bind,source="$(pwd)"/App,target=/AppStarter \
 --mount type=bind,source=$WEIGHTS_DIR,target=/Weights \
 --name pasp_container \
-"${IMAGE_NAME}:${IMAGE_TAG}" bash /AppStarter/run_app.sh $EXTRACT $INFERENCE $WEIGHTS_NAME
+"${IMAGE_NAME}:${IMAGE_TAG}" bash /AppStarter/run_app.sh "$EXTRACT" "$INFERENCE" "$WEIGHTS_NAME"

@@ -10,5 +10,5 @@ fi
 
 # Inference
 if [ "${INFERENCE}" = "TRUE" ]; then
-    python /AppStarter/Model_Inference/apply.py $3
+    python /AppStarter/Model_Inference/apply.py "$3"
 fi

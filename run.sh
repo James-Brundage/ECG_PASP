@@ -47,4 +47,4 @@ docker run -it --rm \
 --mount type=bind,source="$(pwd)"/App,target=/AppStarter \
 --mount type=bind,source=$WEIGHTS_DIR,target=/Weights \
 --name pasp_container \
-"${IMAGE_NAME}:${IMAGE_TAG}" bash /AppStarter/run_app.sh $EXTRACT $INFERENCE $WEIGHTS_NAME
+"${IMAGE_NAME}:${IMAGE_TAG}" bash /AppStarter/run_app.sh "$EXTRACT" "$INFERENCE" "$WEIGHTS_NAME"
