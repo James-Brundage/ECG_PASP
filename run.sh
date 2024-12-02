@@ -24,7 +24,7 @@ status=$?  # Store the exit status
 if [[ $status -eq 0 ]]; then
     echo "Docker confirmed."
 else
-    echo "Docker not isntalled, please install and try again."
+    echo "Docker not installed, please install and try again."
     exit 1
 fi
 
